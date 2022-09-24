@@ -11,6 +11,8 @@ document.getElementById('generateButton').addEventListener('click', function(){
         num = num+'0';
     }
     document.getElementById('generateField').value = num;
+    printTryLeft(3);
+    printManualPin('');
 }) ;
 function getPin(){
     return document.getElementById('manualPin').value
@@ -18,7 +20,7 @@ function getPin(){
 function printManualPin(num){
     document.getElementById('manualPin').value = num;
 }
-var numbers = document.getElementsByClassName('button');
+var numbers = document.getElementsByClassName('number');
 for (let i = 0; i < numbers.length; i++) {
     numbers[i].addEventListener('click', function(){
         var previous = getPin();
@@ -41,5 +43,27 @@ document.getElementById('submit').addEventListener('click', function(){
     else{
         document.getElementById('notify-negative').style.display = 'block';
         document.getElementById('notify-positive').style.display = 'none';
+        var n = document.getElementById('try-left').innerText;
+        n = parseInt(n);
+        if(n==0){
+            alert("You cannot enter anymore");
+        }
+        else{
+            n--;
+            printTryLeft(n);
+        }
     }
 });
+
+document.getElementById('clear').addEventListener('click', function(){
+    printManualPin('');
+})
+document.getElementById('backspace').addEventListener('click', function(){
+    var previous = getPin();
+    var current = previous.slice(0, -1);
+    printManualPin(current);
+});
+
+function printTryLeft(n){
+    document.getElementById('try-left').innerText = n;
+}

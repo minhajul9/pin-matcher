@@ -13,6 +13,9 @@ document.getElementById('generateButton').addEventListener('click', function(){
     document.getElementById('generateField').value = num;
     printTryLeft(3);
     printManualPin('');
+    document.getElementById('notify-negative').style.display = 'none';
+    document.getElementById('notify-positive').style.display = 'none';
+
 }) ;
 function getPin(){
     return document.getElementById('manualPin').value

@@ -28,3 +28,18 @@ for (let i = 0; i < numbers.length; i++) {
     
 }
 
+
+document.getElementById('submit').addEventListener('click', function(){
+    var manualPin = getPin();
+    var generatedPin = document.getElementById('generateField').value;
+    console.log(manualPin);
+    console.log(generatedPin);
+    if(manualPin == generatedPin){
+        document.getElementById('notify-positive').style.display = 'block';
+        document.getElementById('notify-negative').style.display = 'none';
+    }
+    else{
+        document.getElementById('notify-negative').style.display = 'block';
+        document.getElementById('notify-positive').style.display = 'none';
+    }
+});

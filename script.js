@@ -1,15 +1,22 @@
+// generating pin 
+function generatePin(){
+    const random = Math.round(Math.random()*10000);
+    return random;
+}
+
+function fourDigitPin(){
+    const pin = generatePin()+'';
+    
+    if(pin.length === 4){
+        return pin;
+    }
+    else{
+        return fourDigitPin();
+    }
+}
+
 document.getElementById('generateButton').addEventListener('click', function(){
-    var num = Math.random()*9999;
-    num = Math.round(num) +'';
-    if(num.length==1){
-        num = num+'000';
-    }
-    else if(num.length==2){
-        num = num+'00';
-    }
-    else if(num.length==3){
-        num = num+'0';
-    }
+    var num = fourDigitPin();
     document.getElementById('generateField').value = num;
     printTryLeft(3);
     printManualPin('');
